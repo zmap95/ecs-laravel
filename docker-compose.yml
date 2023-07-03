@@ -11,7 +11,7 @@ services:
           dockerfile: ./env/docker/nginx/Dockerfile
         restart: always
         ports:
-        - "20001:80"
+        - "80:80"
         volumes:
           - ./src:/app:delegated
           - ./env/docker/nginx/conf.d:/etc/nginx/conf.d

@@ -19,6 +19,6 @@ show_all:
 	docker-compose -p genken-cms -f docker-compose.yml ps
 
 up:
-	docker-compose -p genken-cms -f docker-compose.yml up -d php nginx phpmyadmin
+	docker-compose -p genken-cms -f docker-compose.yml up -d php nginx
 down:
 	docker-compose -p genken-cms -f docker-compose.yml down
