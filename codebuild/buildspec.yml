@@ -20,16 +20,13 @@ phases:
       - ls -al
       - echo Building the Docker image...
       - make build_php
-      - docker images
-      # - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      # - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $IMAGE_URI:$IMAGE_TAG      
+      - docker tag genken-prod-cms-php:$IMAGE_TAG $IMAGE_URI:$IMAGE_TAG      
   post_build:
     commands:
       - echo Build completed on `date`
-      # - echo Pushing the Docker image...
-      # - docker push $IMAGE_URI:$IMAGE_TAG
-      #- printf '[{"name":"%s","imageUri":"%s"}]' "workspace" "$IMAGE_URI:$IMAGE_TAG" > imagedefinitions.json
-      # - printf '{"Version":"1.0","ImageURI":"%s"}' "$IMAGE_URI:$IMAGE_TAG" > imageDetail.json
+      - echo Pushing the Docker image...
+      - docker push $IMAGE_URI:$IMAGE_TAG
+      - printf '[{"name":"%s","imageUri":"%s"}]' "genken-prod-cms" "$IMAGE_URI:$IMAGE_TAG" > imagedefinitions.json
 artifacts:
     files: 
-      - imageDetail.json
+      - imagedefinitions.json
