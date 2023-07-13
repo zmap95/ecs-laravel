@@ -15,12 +15,13 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the env...
-      - cp -rf $CODEBUILD_SRC_DIR_ApiDef/code-build/.env.prod $CODEBUILD_SRC_DIR_ApiDef/src/.env
+      - cp -rf $CODEBUILD_SRC_DIR_code/* $CODEBUILD_SRC_DIR_Infa/src/
+      - cp -rf $CODEBUILD_SRC_DIR_Infa/code-build/.env.prod $CODEBUILD_SRC_DIR_Infa/src/.env
       - ls -al
       - echo Building the Docker image...
       - make build_base
       - make build_php
-      - docker ps
+      - docker images
       # - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
       # - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $IMAGE_URI:$IMAGE_TAG      
   post_build:
