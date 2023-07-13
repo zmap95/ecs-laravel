@@ -15,6 +15,10 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the env...
+      - ls -al
+      - cd $CODEBUILD_SRC_DIR_code/
+      - ls -al
+      - cd 
       - cp -rf $CODEBUILD_SRC_DIR_code/* $CODEBUILD_SRC_DIR_Infa/src/
       - cp -rf $CODEBUILD_SRC_DIR_Infa/code-build/.env.prod $CODEBUILD_SRC_DIR_Infa/src/.env
       - ls -al
