@@ -1,0 +1,116 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:051910502774:task-definition/genken-prod-cms:11",
+    "containerDefinitions": [
+        {
+            "name": "nginx",
+            "image": "051910502774.dkr.ecr.ap-northeast-1.amazonaws.com/genken-prod-nginx:latest",
+            "cpu": 0,
+            "links": [
+                "php"
+            ],
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 0,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "dependsOn": [
+                {
+                    "containerName": "php",
+                    "condition": "START"
+                }
+            ],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/genken-prod-cms",
+                    "awslogs-region": "ap-northeast-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        },
+        {
+            "name": "php",
+            "image": "051910502774.dkr.ecr.ap-northeast-1.amazonaws.com/genken-prod-cms:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 9000,
+                    "hostPort": 0,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": false,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/genken-prod-cms",
+                    "awslogs-region": "ap-northeast-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "family": "genken-prod-cms",
+    "executionRoleArn": "arn:aws:iam::051910502774:role/ecsTaskExecutionRole",
+    "networkMode": "bridge",
+    "revision": 11,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.container-ordering"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EXTERNAL",
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2023-07-04T16:59:05.056Z",
+    "registeredBy": "arn:aws:iam::051910502774:user/canh",
+    "tags": []
+}
