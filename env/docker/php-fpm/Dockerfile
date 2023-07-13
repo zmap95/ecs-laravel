@@ -1,6 +1,6 @@
 FROM 051910502774.dkr.ecr.ap-northeast-1.amazonaws.com/genken-prod-cms-base:latest
 
-ARG BUILD_ENV=development
+ARG BUILD_ENV=production
 
 RUN if [ ${BUILD_ENV} != "prodution" ]; then apt-get update && apt-get install -y procps; fi
 COPY docker-php-ext-* ./env/docker/php-fpm/docker-php-entrypoint /usr/local/bin/
