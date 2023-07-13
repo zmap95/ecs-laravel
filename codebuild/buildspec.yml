@@ -15,8 +15,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the env...
-      - cp -rf $CODEBUILD_SRC_DIR_code/* ./src/
-      - cp -rf ./code-build/.env.prod ./src/.env
+      - cp -rf $CODEBUILD_SRC_DIR_SourceArtifactCode/* ./src/
+      # - cp -rf ./code-build/.env.prod ./src/.env
       - ls -al
       - echo Building the Docker image...
       - make build_base
