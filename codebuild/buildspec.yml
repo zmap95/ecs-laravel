@@ -19,7 +19,6 @@ phases:
       # - cp ./code-build/.env.prod ./src/.env
       - ls -al
       - echo Building the Docker image...
-      - make build_base
       - make build_php
       - docker images
       # - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .

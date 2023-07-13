@@ -1,4 +1,4 @@
-FROM genken-cms_base
+FROM 051910502774.dkr.ecr.ap-northeast-1.amazonaws.com/genken-prod-cms-base:latest
 
 ARG BUILD_ENV=development
 
